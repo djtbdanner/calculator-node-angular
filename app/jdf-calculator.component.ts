@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Payment, Loan } from './jdf-calculator.classes'
+import { Payment, Loan } from './jdf-calculator.classes';
 import { JDFCalculatorService } from './jdf-calculator.service';
 
 

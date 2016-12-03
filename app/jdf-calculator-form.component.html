@@ -7,16 +7,15 @@
       <tbody>
         <tr>
           <td>
-            <label> Loan Amount </label>
-            <!--<input type="text" class="form-control" placeholder="Loan Amount" #loanAmount=  [ngModel]="loanAmount" required minlength="2">-->
-            <input type="text" class="form-control" placeholder="Loan Amount" name="loanAmount" [ngModel]="form.loanAmount" required minlength="2"  maxlength="8" #loanAmount="ngModel" ngModel pattern="[0-9]{1,8}" (change)="changeLoanAmount(loanAmount.value)">
+            <label> Loan Amount</label>
+            <input type="text" class="form-control" placeholder="Loan Amount" name="loanAmount" [ngModel]="form.loanAmount" required minlength="2"  maxlength="8" #loanAmount="ngModel" ngModel pattern="[0-9]{1,8}" (keyup)="changeLoanAmount(loanAmount.value)">
             <small [hidden]="loanAmount.valid || (loanAmount.pristine)" class="text-danger"> 
                 LoanAmount is required and must be numeric.
             </small>
           </td>
           <td>
             <label> Interest Rate %</label>
-            <input type="text" class="form-control" placeholder="Interest Rate %" name="interestRate" [ngModel]="form.interestRate" required minlength="1"  maxlength="3" #interestRate="ngModel" ngModel pattern="[0-9]{1,3}" (change)="changeLoanInterest(interestRate.value)">
+            <input type="text" class="form-control" placeholder="Interest Rate %" name="interestRate" [ngModel]="form.interestRate" required minlength="1"  maxlength="3" #interestRate="ngModel" ngModel pattern="[0-9]{1,3}" (keyup)="changeLoanInterest(interestRate.value)">
             <small [hidden]="interestRate.valid || (interestRate.pristine)" class="text-danger"> 
                 Interest Rate is required and must be numeric.
             </small>
@@ -25,7 +24,7 @@
         <tr>
           <td>
             <label>Number Of Payments</label>
-             <input type="text" class="form-control" placeholder="Number Of Payments" name="numberOfPayments" [ngModel]="form.numberOfPayments" required minlength="1"  maxlength="3" #numberOfPayments="ngModel" ngModel pattern="[0-9]{1,3}" (change)="changeLoanPayment(numberOfPayments.value)">
+             <input type="text" class="form-control" placeholder="Number Of Payments" name="numberOfPayments" [ngModel]="form.numberOfPayments" required minlength="1"  maxlength="3" #numberOfPayments="ngModel" ngModel pattern="[0-9]{1,3}" (keyup)="changeLoanPayment(numberOfPayments.value)">
             <small [hidden]="numberOfPayments.valid || (numberOfPayments.pristine)" class="text-danger"> 
                 Number of payments is required and must be numeric.
             </small>
@@ -37,6 +36,8 @@
         </tr>
       </tbody>
     </table>
+    
+
     <table class="table">
       <thead class="thead-inverse">
         <tr>
