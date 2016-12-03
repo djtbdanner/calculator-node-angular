@@ -1,0 +1,67 @@
+<div class="jumbotron">
+  <h2>Loan Calculator</h2>
+  <form #form="ngForm">
+
+    <table class="table">
+
+      <tbody>
+        <tr>
+          <td>
+            <label> Loan Amount </label>
+            <!--<input type="text" class="form-control" placeholder="Loan Amount" #loanAmount=  [ngModel]="loanAmount" required minlength="2">-->
+            <input type="text" class="form-control" placeholder="Loan Amount" name="loanAmount" [ngModel]="form.loanAmount" required minlength="2"  maxlength="8" #loanAmount="ngModel" ngModel pattern="[0-9]{1,8}" (change)="changeLoanAmount(loanAmount.value)">
+            <small [hidden]="loanAmount.valid || (loanAmount.pristine)" class="text-danger"> 
+                LoanAmount is required and must be numeric.
+            </small>
+          </td>
+          <td>
+            <label> Interest Rate %</label>
+            <input type="text" class="form-control" placeholder="Interest Rate %" name="interestRate" [ngModel]="form.interestRate" required minlength="1"  maxlength="3" #interestRate="ngModel" ngModel pattern="[0-9]{1,3}" (change)="changeLoanInterest(interestRate.value)">
+            <small [hidden]="interestRate.valid || (interestRate.pristine)" class="text-danger"> 
+                Interest Rate is required and must be numeric.
+            </small>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>Number Of Payments</label>
+             <input type="text" class="form-control" placeholder="Number Of Payments" name="numberOfPayments" [ngModel]="form.numberOfPayments" required minlength="1"  maxlength="3" #numberOfPayments="ngModel" ngModel pattern="[0-9]{1,3}" (change)="changeLoanPayment(numberOfPayments.value)">
+            <small [hidden]="numberOfPayments.valid || (numberOfPayments.pristine)" class="text-danger"> 
+                Number of payments is required and must be numeric.
+            </small>
+          </td>
+          <td>
+            <label>Start Date</label>
+            <input type="date" class="form-control" #startDate name="startDate" (change)="changeStartDate(startDate.value)" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table">
+      <thead class="thead-inverse">
+        <tr>
+          <th>#</th>
+          <th>Amount</th>
+          <th>Principal</th>
+          <th>Interest</th>
+          <th>Total Int</th>
+          <th>Balance</th>
+          <th>Due Date</th>
+        </tr>
+      </thead>
+
+      <tbody *ngFor="let payment of payments">
+        <tr>
+          <td>{{ payment.paymentNumber }}</td>
+          <td>{{ payment.amount | currency:'USD':true:'1.2-2'}}</td>
+          <td>{{ payment.principal | currency:'USD':true:'1.2-2'}}</td>
+          <td>{{ payment.interest | currency:'USD':true:'1.2-2'}}</td>
+          <td>{{ payment.totalInterest | currency:'USD':true:'1.2-2'}}</td>
+          <td>{{ payment.balance | currency:'USD':true:'1.2-2'}}</td>
+          <td>{{ payment.dueDate | date: 'MM/dd/yyyy' }}</td>
+        </tr>
+        <tr>
+      </tbody>
+    </table>
+  </form>
+</div>
