@@ -8,9 +8,13 @@ export class JDFCalculatorService {
 
     calculate(loan: Loan) {
 
-        let rate = loan.interest / 12;
-
-        let paymentAmount = loan.amount * (rate / (1 - Math.pow((1 + rate), -loan.payments)));
+        let paymentAmount = 0;
+        if (loan.interest > 0){
+            let rate = loan.interest / 12;
+            paymentAmount = loan.amount * (rate / (1 - Math.pow((1 + rate), -loan.payments)));
+        } else {
+            paymentAmount = paymentAmount = loan.amount/loan.payments;
+        }
 
         let payments = new Array;
         let totalLoanAmt = loan.amount;

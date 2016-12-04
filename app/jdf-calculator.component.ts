@@ -20,7 +20,7 @@ export class JDFCalculator {
   } 
 
   calculateLoan() {
-    if (this.loan.amount > 0 && this.loan.interest > 0 && this.loan.payments > 0) {
+    if (this.loan.amount > 0 && this.loan.interest >= 0 && this.loan.payments > 0) {
       if (this.loan.startDate === undefined) {
         this.loan.startDate = this._calculatorService.addMonthsUTC(new Date(), 1);
       }

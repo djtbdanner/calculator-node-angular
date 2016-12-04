@@ -14,8 +14,14 @@ var JDFCalculatorService = (function () {
     function JDFCalculatorService() {
     }
     JDFCalculatorService.prototype.calculate = function (loan) {
-        var rate = loan.interest / 12;
-        var paymentAmount = loan.amount * (rate / (1 - Math.pow((1 + rate), -loan.payments)));
+        var paymentAmount = 0;
+        if (loan.interest > 0) {
+            var rate = loan.interest / 12;
+            paymentAmount = loan.amount * (rate / (1 - Math.pow((1 + rate), -loan.payments)));
+        }
+        else {
+            paymentAmount = paymentAmount = loan.amount / loan.payments;
+        }
         var payments = new Array;
         var totalLoanAmt = loan.amount;
         var totalInterest = 0;
