@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Payment, Loan } from './jdf-calculator.classes';
+import { Payment, Loan, PaymentData } from './jdf-calculator.classes';
 import { JDFCalculatorService } from './jdf-calculator.service';
 
 
@@ -11,18 +11,20 @@ export class JDFCalculator {
 
   payments: Payment[];
   loan: Loan;
+  paymentData: PaymentData;
 
   constructor(private _calculatorService: JDFCalculatorService) {
     this.loan = new Loan; 
-  }
+  } 
 
   calculateLoan() {
     if (this.loan.amount > 0 && this.loan.interest > 0 && this.loan.payments > 0) {
       if (this.loan.startDate === undefined) {
         this.loan.startDate = this._calculatorService.addMonthsUTC(new Date(), 1);
       }
-      this.payments = this._calculatorService.calculate(this.loan);
-    }
+      this.paymentData = this._calculatorService.calculate(this.loan);
+      this.payments = this.paymentData.payments;
+    } 
   }
 
   changeLoanAmount(value: number) {

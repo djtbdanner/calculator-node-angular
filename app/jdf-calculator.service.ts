@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { Payment, Loan } from './jdf-calculator.classes';
+import { Payment, Loan, PaymentData } from './jdf-calculator.classes';
 
 
 @Injectable()
@@ -8,11 +8,11 @@ export class JDFCalculatorService {
 
     calculate(loan: Loan) {
 
-        let rate = loan.interest/12;
+        let rate = loan.interest / 12;
 
         let paymentAmount = loan.amount * (rate / (1 - Math.pow((1 + rate), -loan.payments)));
 
-           let payments = new Array;
+        let payments = new Array;
         let totalLoanAmt = loan.amount;
         let totalInterest = 0;
 
@@ -21,7 +21,7 @@ export class JDFCalculatorService {
             let principal = paymentAmount - interest;
             totalInterest = totalInterest + interest;
             totalLoanAmt = totalLoanAmt - principal;
-  
+
             let payment = new Payment;
             payment.amount = paymentAmount;
             payment.interest = interest;
@@ -36,7 +36,14 @@ export class JDFCalculatorService {
             payments.push(payment);
         }
 
-        return payments;
+        let paymentData = new PaymentData;
+        paymentData.payments = payments;
+        let p = new Payment;
+        p.amount = paymentAmount;
+        p.interest = totalInterest;
+        p.round();
+        paymentData.payment = p;
+        return paymentData;
     }
 
     addMonthsUTC(date: Date, count: number) {

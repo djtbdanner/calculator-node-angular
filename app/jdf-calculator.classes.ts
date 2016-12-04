@@ -23,3 +23,8 @@ export class Loan {
     payments: number;
     startDate: Date;
 }
+
+export class PaymentData {
+    payment: Payment;
+    payments: Payment[];
+}
