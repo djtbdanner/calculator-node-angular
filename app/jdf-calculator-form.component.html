@@ -1,5 +1,5 @@
-<div class="jumbotron">
-  <h2 class="no-print">Loan Calculator</h2>
+<div class="basic">
+  <h2 class="no-print text-center ">Loan Calculator</h2>
   <form #form="ngForm">
 
     <table class="table no-print">
@@ -36,19 +36,33 @@
             <label>Start Date</label>
             <input type="date" class="form-control" #startDate name="startDate" (change)="changeStartDate(startDate.value)" />
           </td>
+
+        </tr>
+        <tr>
+          <td colspan="2">
+            <label>Loan item</label>
+            <input class="form-control" [(ngModel)]="loanItem" name="loanItem">
+          </td>
         </tr>
       </tbody>
     </table>
     <div *ngIf="paymentData">
-      <h4 class="text-info text-center">Monthly Payment {{paymentData.payment.amount | currency:'USD':true:'1.2-2'}}, Total Interest {{paymentData.payment.interest | currency:'USD':true:'1.2-2'}} </h4>
+      <h4 *ngIf="loanItem" class="text-info text-center"> Payment Amortization scheule for {{loanItem}}.</h4>
+      <h4 class="text-info text-center">
+        Monthly Payment {{paymentData.payment.amount | currency:'USD':true:'1.2-2'}}, Total Interest {{paymentData.payment.interest
+        | currency:'USD':true:'1.2-2'}}
+      </h4>
+
       <table class="table table-bordered table-striped">
         <thead class="thead-inverse">
           <tr>
             <th class="hidden-xs">#</th>
-            <th>Amount</th>
+            <th class="visible-print-block">#</th>
+            <th>Payment</th>
             <th>Principal</th>
             <th>Interest</th>
-            <th class="hidden-xs">Total Int</th>
+            <th class="hidden-xs">Total Int.</th>
+            <th class="visible-print-block">Total Interest</th>
             <th>Balance</th>
             <th>Due Date</th>
           </tr>
@@ -57,10 +71,12 @@
         <tbody *ngFor="let payment of payments">
           <tr>
             <td class="hidden-xs">{{ payment.paymentNumber }}</td>
+            <td class="visible-print-block">{{ payment.paymentNumber }}</td>
             <td>{{ payment.amount | currency:'USD':true:'1.2-2'}}</td>
             <td>{{ payment.principal | currency:'USD':true:'1.2-2'}}</td>
             <td>{{ payment.interest | currency:'USD':true:'1.2-2'}}</td>
             <td class="hidden-xs">{{ payment.totalInterest | currency:'USD':true:'1.2-2'}}</td>
+            <td class="visible-print-block">{{ payment.totalInterest | currency:'USD':true:'1.2-2'}}</td>
             <td>{{ payment.balance | currency:'USD':true:'1.2-2'}}</td>
             <td>{{ payment.dueDate | date: 'MM/dd/yyyy' }}</td>
           </tr>

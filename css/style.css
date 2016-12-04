@@ -4,6 +4,16 @@
     {
         display: none !important;
     }
+    .printable {
+        display: block;
+    }
 }
- 
+
+.basic{
+  padding: 1px;
+  margin: 1px;
+  border: 1px;
+  background-color:#e0e0e3;
+  color: black;
+}
 

@@ -12,9 +12,11 @@ export class JDFCalculator {
   payments: Payment[];
   loan: Loan;
   paymentData: PaymentData;
+  loanItem:String;
 
   constructor(private _calculatorService: JDFCalculatorService) {
     this.loan = new Loan; 
+    this.loanItem="";
   } 
 
   calculateLoan() {

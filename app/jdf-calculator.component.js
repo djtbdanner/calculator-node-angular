@@ -15,6 +15,7 @@ var JDFCalculator = (function () {
     function JDFCalculator(_calculatorService) {
         this._calculatorService = _calculatorService;
         this.loan = new jdf_calculator_classes_1.Loan;
+        this.loanItem = "";
     }
     JDFCalculator.prototype.calculateLoan = function () {
         if (this.loan.amount > 0 && this.loan.interest > 0 && this.loan.payments > 0) {
