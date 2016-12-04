@@ -11,7 +11,7 @@
             <input type="text" class="form-control" placeholder="Loan Amount" name="loanAmount" [ngModel]="form.loanAmount" required
               minlength="2" maxlength="8" #loanAmount="ngModel" ngModel pattern="[0-9.]{1,9}" (keyup)="changeLoanAmount(loanAmount.value)">
             <small [hidden]="loanAmount.valid || (loanAmount.pristine)" class="text-danger"> 
-                LoanAmount is required and must be numeric.
+                Loan Amount is required and must be numeric.
             </small>
           </td>
           <td>
@@ -29,7 +29,7 @@
             <input type="text" class="form-control" placeholder="Number Of Payments" name="numberOfPayments" [ngModel]="form.numberOfPayments"
               required minlength="1" maxlength="3" #numberOfPayments="ngModel" ngModel pattern="[0-9]{1,3}" (keyup)="changeLoanPayment(numberOfPayments.value)">
             <small [hidden]="numberOfPayments.valid || (numberOfPayments.pristine)" class="text-danger"> 
-                Number of payments is required and must be numeric.
+                Number of payments/Term is required and must be numeric.
             </small>
           </td>
           <td>
