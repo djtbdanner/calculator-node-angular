@@ -28,6 +28,7 @@ var JDFCalculatorService = (function () {
         for (var i = 0; i < loan.payments; i++) {
             var interest = (totalLoanAmt * loan.interest) / 12;
             var principal = paymentAmount - interest;
+            var beginningBalance = totalLoanAmt;
             totalInterest = totalInterest + interest;
             totalLoanAmt = totalLoanAmt - principal;
             var payment = new jdf_calculator_classes_1.Payment;
@@ -36,6 +37,7 @@ var JDFCalculatorService = (function () {
             payment.totalInterest = totalInterest;
             payment.principal = principal;
             payment.balance = totalLoanAmt;
+            payment.beginningBalance = beginningBalance;
             payment.paymentNumber = i + 1;
             payment.round();
             var date = new Date;

@@ -22,6 +22,6 @@ echo Above it the package.json contents
 echo.
 echo.
 
-CHOICE /M "Exiting in 7 seconds" /C EXIT /D E /T 7
+CHOICE /M "Exiting in 4 seconds" /C EXIT /D E /T 4
 
 

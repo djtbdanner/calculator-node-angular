@@ -2,6 +2,7 @@
 var Payment = (function () {
     function Payment() {
         this.totalInterest = 0;
+        this.beginningBalance = 0;
     }
     Payment.prototype.round = function () {
         this.amount = Math.round(this.amount * 100) / 100;
@@ -9,6 +10,7 @@ var Payment = (function () {
         this.interest = Math.round(this.interest * 100) / 100;
         this.balance = Math.round(this.balance * 100) / 100;
         this.totalInterest = Math.round(this.totalInterest * 100) / 100;
+        this.beginningBalance = Math.round(this.beginningBalance * 100) / 100;
     };
     return Payment;
 }());

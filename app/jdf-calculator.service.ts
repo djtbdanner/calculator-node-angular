@@ -23,8 +23,10 @@ export class JDFCalculatorService {
         for (let i = 0; i < loan.payments; i++) {
             let interest = (totalLoanAmt * loan.interest) / 12
             let principal = paymentAmount - interest;
+            let beginningBalance = totalLoanAmt;
             totalInterest = totalInterest + interest;
             totalLoanAmt = totalLoanAmt - principal;
+
 
             let payment = new Payment;
             payment.amount = paymentAmount;
@@ -32,6 +34,7 @@ export class JDFCalculatorService {
             payment.totalInterest = totalInterest;
             payment.principal = principal;
             payment.balance = totalLoanAmt;
+            payment.beginningBalance = beginningBalance;
             payment.paymentNumber = i + 1;
             payment.round();
 
