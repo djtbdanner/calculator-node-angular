@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Payment, Loan, PaymentData } from './jdf-calculator.classes';
 import { JDFCalculatorService } from './jdf-calculator.service';
 import 'rxjs/add/operator/debounceTime';
-import {enableProdMode} from '@angular/core';
+import { enableProdMode } from '@angular/core';
 
 enableProdMode();
 @Component({
@@ -45,7 +45,7 @@ export class JDFCalculator {
             .debounceTime(dbTimeMillis)
             .subscribe(newValue => {
                 this.loan.payments = newValue;
-                this.calculateLoan(); 
+                this.calculateLoan();
             });
         this.startDate.valueChanges
             .debounceTime(dbTimeMillis)
@@ -55,6 +55,7 @@ export class JDFCalculator {
                 this.loan.startDate = date;
                 this.calculateLoan();
             });
+        this.startDate.setValue(new Date().toISOString().substr(0, 10));
     }
 
     calculateLoan() {

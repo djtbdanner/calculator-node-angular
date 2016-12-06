@@ -54,6 +54,7 @@ var JDFCalculator = (function () {
             _this.loan.startDate = date;
             _this.calculateLoan();
         });
+        this.startDate.setValue(new Date().toISOString().substr(0, 10));
     };
     JDFCalculator.prototype.calculateLoan = function () {
         if (this.loan.amount > 0 && this.loan.interest >= 0 && this.loan.payments > 0) {

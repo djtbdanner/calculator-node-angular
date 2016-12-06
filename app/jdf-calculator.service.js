@@ -16,6 +16,7 @@ var JDFCalculatorService = (function () {
     JDFCalculatorService.prototype.calculate = function (loan) {
         var paymentAmount = 0;
         if (loan.interest > 0) {
+            loan.interest = loan.interest / 100;
             var rate = loan.interest / 12;
             paymentAmount = loan.amount * (rate / (1 - Math.pow((1 + rate), -loan.payments)));
         }

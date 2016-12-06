@@ -10,6 +10,7 @@ export class JDFCalculatorService {
 
         let paymentAmount = 0;
         if (loan.interest > 0){
+            loan.interest = loan.interest / 100;
             let rate = loan.interest / 12;
             paymentAmount = loan.amount * (rate / (1 - Math.pow((1 + rate), -loan.payments)));
         } else {
