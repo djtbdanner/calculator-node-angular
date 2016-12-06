@@ -15,10 +15,10 @@ var JDFCalculatorService = (function () {
     }
     JDFCalculatorService.prototype.calculate = function (loan) {
         var paymentAmount = 0;
+        var rate = loan.interest / 100;
         if (loan.interest > 0) {
-            loan.interest = loan.interest / 100;
-            var rate = loan.interest / 12;
-            paymentAmount = loan.amount * (rate / (1 - Math.pow((1 + rate), -loan.payments)));
+            var rateC = rate / 12;
+            paymentAmount = loan.amount * (rateC / (1 - Math.pow((1 + rateC), -loan.payments)));
         }
         else {
             paymentAmount = paymentAmount = loan.amount / loan.payments;
@@ -27,7 +27,7 @@ var JDFCalculatorService = (function () {
         var totalLoanAmt = loan.amount;
         var totalInterest = 0;
         for (var i = 0; i < loan.payments; i++) {
-            var interest = (totalLoanAmt * loan.interest) / 12;
+            var interest = (totalLoanAmt * rate) / 12;
             var principal = paymentAmount - interest;
             var beginningBalance = totalLoanAmt;
             totalInterest = totalInterest + interest;
