@@ -3,21 +3,18 @@
   <form #form="ngForm">
 
     <table class="table no-print">
-
       <tbody>
         <tr>
           <td>
             <label> Loan Amount</label>
-            <input type="text" class="form-control" placeholder="Loan Amount" name="loanAmount" [ngModel]="form.loanAmount" required
-              minlength="2" maxlength="8" #loanAmount="ngModel" ngModel pattern="[0-9.]{1,9}" (keyup)="changeLoanAmount(loanAmount.value)">
+            <input type="text" class="form-control" placeholder="Loan Amount" name="loanAmount"  required  minlength="2" maxlength="8" ngModel pattern="[0-9.]{1,9}"  [formControl]="loanAmount" (keyup)="clearSchedule()">
             <small [hidden]="loanAmount.valid || (loanAmount.pristine)" class="text-danger"> 
                 Loan Amount is required and must be numeric.
             </small>
           </td>
           <td>
             <label> Interest Rate %</label>
-            <input type="text" class="form-control" placeholder="Interest Rate %" name="interestRate" [ngModel]="form.interestRate" required
-              minlength="1" maxlength="3" #interestRate="ngModel" ngModel pattern="[0-9.]{1,4}" (keyup)="changeLoanInterest(interestRate.value)">
+            <input type="text" class="form-control" placeholder="Interest Rate %" name="interestRate" required  minlength="1" maxlength="3" ngModel pattern="[0-9.]{1,4}" [formControl]="interestRate" (keyup)="clearSchedule()">
             <small [hidden]="interestRate.valid || (interestRate.pristine)" class="text-danger"> 
                 Interest Rate is required and must be numeric.
             </small>
@@ -26,15 +23,14 @@
         <tr>
           <td>
             <label>Loan Term</label>
-            <input type="text" class="form-control" placeholder="Number Of Payments" name="numberOfPayments" [ngModel]="form.numberOfPayments"
-              required minlength="1" maxlength="3" #numberOfPayments="ngModel" ngModel pattern="[0-9]{1,3}" (keyup)="changeLoanPayment(numberOfPayments.value)">
+            <input type="text" class="form-control" placeholder="Number Of Payments" name="numberOfPayments" required minlength="1" maxlength="3" ngModel pattern="[0-9]{1,3}" [formControl]="numberOfPayments" (keyup)="clearSchedule()">
             <small [hidden]="numberOfPayments.valid || (numberOfPayments.pristine)" class="text-danger"> 
                 Number of payments/Term is required and must be numeric.
             </small>
           </td>
           <td>
             <label>Start Date</label>
-            <input type="date" class="form-control" #startDate name="startDate" (change)="changeStartDate(startDate.value)" />
+            <input type="date" class="form-control" name="startDate" [formControl]="startDate" (change)="clearSchedule()">
           </td>
 
         </tr>

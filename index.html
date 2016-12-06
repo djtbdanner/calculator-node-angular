@@ -1,31 +1,39 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
-  <head> 
-    <title>Calculator</title>
-    <meta charset="UTF-8">
-    <meta name="description" content="Payment calculator/printer">
-    <meta name="keywords" content="loan,calculator,amortization calculator,interest">
-    <meta name="author" content="Dave Danner">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/style.css">
-        <!-- Include Bootstrap-->
-    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    
 
-    <!-- Polyfill(s) for older browsers -->
-    <script src="node_modules/core-js/client/shim.min.js"></script>
+<head>
+  <title>Calculator</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="Payment calculator/printer">
+  <meta name="keywords" content="loan,calculator,amortization calculator,interest">
+  <meta name="author" content="Dave Danner">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Include Bootstrap-->
+  <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <script src="node_modules/zone.js/dist/zone.js"></script>
-    <script src="node_modules/reflect-metadata/Reflect.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
 
-    <script src="systemjs.config.js"></script>
-    <script>
+  <!-- Polyfill(s) for older browsers -->
+  <script src="node_modules/core-js/client/shim.min.js"></script>
+
+  <script src="node_modules/zone.js/dist/zone.js"></script>
+  <script src="node_modules/reflect-metadata/Reflect.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+  <script src="systemjs.config.js"></script>
+  <script>
       System.import('app').catch(function(err){ console.error(err); });
     </script>
-  </head>
+</head>
 
-  <body>
-    <jdf-calculator>Please wait as the app loads...</jdf-calculator>
-  </body>
+<body>
+  <jdf-calculator>
+       <div class="loader"></div>
+        <h1>
+        Loan Calculator is loading...
+        </h1>
+  </jdf-calculator>
+
+</body>
+
 </html>
