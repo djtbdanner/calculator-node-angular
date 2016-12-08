@@ -23,15 +23,35 @@
   <script src="systemjs.config.js"></script>
   <script>
       System.import('app').catch(function(err){ console.error(err); });
+      var i = 0;
+      function moveIt(){
+          i = i + 1;
+          var e = document.getElementById("spinner");
+          e.style.left = i+"px";
+      }
+      
+      var j = 1;
+      var elipse = "";
+      function doElipse(){
+        var e2 = document.getElementById("elipse");
+
+        for (var x = 0; x < j ;x++){
+          elipse = elipse + "."
+        }  
+        e2.textContent = elipse;
+      }
+      setInterval(function(){ moveIt(); }, 100);
+      setInterval(function(){ doElipse(); }, 1000);
     </script>
 </head>
 
 <body>
   <jdf-calculator>
-       <div class="loader"></div>
-        <h1>
-        Loan Calculator is loading...
-        </h1>
+
+    <h1>
+      Loan Calculator is loading<span id="elipse"></span>
+    </h1>
+    <div class="loader" id="spinner"></div>
   </jdf-calculator>
 
 </body>

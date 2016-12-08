@@ -28,7 +28,8 @@ export class JDFCalculator {
     }
 
     ngOnInit() {
-        let dbTimeMillis = 500;
+
+        let dbTimeMillis = 750;
         this.loanAmount.valueChanges
             .debounceTime(dbTimeMillis)
             .subscribe(newValue => {

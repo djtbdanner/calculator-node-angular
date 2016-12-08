@@ -18,9 +18,12 @@ type package.json
 
 echo.
 echo. 
-echo Above it the package.json contents
+echo Above is the package.json contents
 echo.
 echo.
+if "%x%" == "L" (
+  npm install
+)
 
 CHOICE /M "Exiting in 4 seconds" /C EXIT /D E /T 4
 

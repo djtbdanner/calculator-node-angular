@@ -27,7 +27,7 @@ var JDFCalculator = (function () {
     }
     JDFCalculator.prototype.ngOnInit = function () {
         var _this = this;
-        var dbTimeMillis = 500;
+        var dbTimeMillis = 750;
         this.loanAmount.valueChanges
             .debounceTime(dbTimeMillis)
             .subscribe(function (newValue) {
