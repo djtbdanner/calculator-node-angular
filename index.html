@@ -25,23 +25,36 @@
       System.import('app').catch(function(err){ console.error(err); });
       var i = 0;
       function moveIt(){
-          i = i + 1;
-          var e = document.getElementById("spinner");
-          e.style.left = i+"px";
+          try{
+            i = i + 1;
+            var e = document.getElementById("spinner");
+            e.style.left = i+"px";
+          } catch (err) {
+            clearAnimation()
+          }
       }
       
       var j = 1;
       var elipse = "";
       function doElipse(){
-        var e2 = document.getElementById("elipse");
+        try{
+           var e2 = document.getElementById("elipse");
 
-        for (var x = 0; x < j ;x++){
-          elipse = elipse + "."
-        }  
-        e2.textContent = elipse;
+          for (var x = 0; x < j ;x++){
+            elipse = elipse + "."
+          }  
+          e2.textContent = elipse;
+        } catch (err){
+            clearAnimation()
+        }
       }
-      setInterval(function(){ moveIt(); }, 100);
-      setInterval(function(){ doElipse(); }, 1000);
+
+      var int1 = setInterval(function(){ moveIt(); }, 100);
+      var int2 = setInterval(function(){ doElipse(); }, 1000);
+      function clearAnimation(){
+          clearInterval(int1); 
+          clearInterval(int2);
+      }  
     </script>
 </head>
 

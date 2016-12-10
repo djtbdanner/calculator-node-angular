@@ -21,10 +21,29 @@ export class JDFCalculator {
     interestRate = new FormControl();
     numberOfPayments = new FormControl();
     startDate = new FormControl();
+    addPayment = new FormControl();
+    addPaymentDate = new FormControl();
+    popUpProcess = new String();
+    popUpMsg = new String();
+
+
+    showPopup = false;
+    showMainScreen = true;
 
     constructor(private _calculatorService: JDFCalculatorService) {
         this.loan = new Loan;
         this.loanItem = "";
+    }
+
+    clickPopUpMsg( msg : String,  process: String) {
+        this.popUpMsg = msg;
+        this.popUpProcess = process;
+        this.showPopup = true;
+        this.showMainScreen = false;
+    }
+    resetScreen() {
+        this.showMainScreen = true;
+        this.showPopup = false;
     }
 
     ngOnInit() {

@@ -2,42 +2,56 @@
   <h2 class="no-print text-center ">Loan Calculator</h2>
   <form #form="ngForm">
 
-    <table class="table no-print">
+    <table class="table no-print" *ngIf="showMainScreen">
       <tbody>
         <tr>
           <td>
             <label> Loan Amount</label>
-            <input type="text" class="form-control" placeholder="Loan Amount" name="loanAmount"  required  minlength="2" maxlength="8" ngModel pattern="[0-9.]{1,9}"  [formControl]="loanAmount" (keyup)="clearSchedule()">
+            <input type="text" class="form-control" placeholder="Loan Amount" name="loanAmount" required minlength="2" maxlength="8"
+              ngModel pattern="[0-9.]{1,9}" [formControl]="loanAmount" (keyup)="clearSchedule()">
             <small [hidden]="loanAmount.valid || (loanAmount.pristine)" class="text-danger"> 
                 Loan Amount is required and must be numeric.
             </small>
           </td>
           <td>
             <label> Interest Rate %</label>
-            <input type="text" class="form-control" placeholder="Interest Rate %" name="interestRate" required  minlength="1" maxlength="3" ngModel pattern="[0-9.]{1,4}" [formControl]="interestRate" (keyup)="clearSchedule()">
+            <input type="text" class="form-control" placeholder="Interest Rate %" name="interestRate" required minlength="1" maxlength="3"
+              ngModel pattern="[0-9.]{1,4}" [formControl]="interestRate" (keyup)="clearSchedule()">
             <small [hidden]="interestRate.valid || (interestRate.pristine)" class="text-danger"> 
                 Interest Rate is required and must be numeric.
             </small>
+          </td>
+          <td class="hidden-xs">
+            <input type="button" class="btn btn-info" value="Add" (click)="clickPopUpMsg('Add Payment', 'Add')" />
+            <input type="button" class="btn btn-info" value="Balloon" (click)="clickPopUpMsg('Add Balloon', 'Add')" />
+            <br> <br>
+            <input type="button" class="btn btn-info" value="Skip" (click)="clickPopUpMsg('Add Skip', 'Skip')" />
           </td>
         </tr>
         <tr>
           <td>
             <label>Loan Term</label>
-            <input type="text" class="form-control" placeholder="Number Of Payments" name="numberOfPayments" required minlength="1" maxlength="3" ngModel pattern="[0-9]{1,3}" [formControl]="numberOfPayments" (keyup)="clearSchedule()">
+            <input type="text" class="form-control" placeholder="Number Of Payments" name="numberOfPayments" required minlength="1" maxlength="3"
+              ngModel pattern="[0-9]{1,3}" [formControl]="numberOfPayments" (keyup)="clearSchedule()">
             <small [hidden]="numberOfPayments.valid || (numberOfPayments.pristine)" class="text-danger"> 
                 Number of payments/Term is required and must be numeric.
             </small>
           </td>
           <td>
             <label>Start Date</label>
-            <input type="date" class="form-control"  name="startDate"  [formControl]="startDate"  (change)="clearSchedule()"  >
+            <input type="date" class="form-control" name="startDate" [formControl]="startDate" (change)="clearSchedule()">
           </td>
-
+          <td class="hidden-xs">
+            <input type="button" class="btn btn-info" value="Fix" (click)="clickPopUpMsg('Add Fix', 'Fix')" />
+            <br> <br>
+            <input type="button" class="btn btn-info" value="Waiver" (click)="clickPopUpMsg('Add Waiver', 'Add')" />
+            <input type="button" class="btn btn-info" value="Buy-Down"(click)="clickPopUpMsg('Add Buy-Down', 'Add')" />
+          </td>
         </tr>
         <tr>
-          <td colspan="2">
+          <td colspan="6">
             <label>Loan item</label>
-            <input class="form-control" [(ngModel)]="loanItem" name="loanItem"  placeholder="Optionally add item or items loan is for." >
+            <input class="form-control" [(ngModel)]="loanItem" name="loanItem" placeholder="Optionally add item or items loan is for.">
           </td>
         </tr>
       </tbody>
@@ -83,6 +97,25 @@
           <tr>
         </tbody>
       </table>
+    </div>
+
+    <!-- Add payment div -->
+    <div *ngIf="showPopup" class="container">
+      <h4 class="text-center">{{ popUpMsg }}</h4>
+      <input type="text" class="form-control" placeholder="Add Payment Amount" name="addPayment" minlength="2" maxlength="8" ngModel
+        pattern="[0-9.]{1,9}" [formControl]="addPayment">
+      <small [hidden]="addPayment.valid || (addPayment.pristine)" class="text-danger"> 
+                Add Payment amount must be numeric.
+      </small>
+      <br/>
+      <input type="date" class="form-control" name="addPaymentDate" [formControl]="addPaymentDate">
+      <br/>
+      <span class="input-group-btn ">
+      <input type="button" class="btn btn-info margin-left" value="{{ popUpProcess }}" (click)="resetScreen()" />
+      <input type="button" class="btn btn-info margin-left" value="Cancel" (click)="resetScreen()" />
+       </span>
+      <br/>
+      <br/>
     </div>
   </form>
 </div>

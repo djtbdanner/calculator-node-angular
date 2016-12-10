@@ -22,9 +22,25 @@ var JDFCalculator = (function () {
         this.interestRate = new forms_1.FormControl();
         this.numberOfPayments = new forms_1.FormControl();
         this.startDate = new forms_1.FormControl();
+        this.addPayment = new forms_1.FormControl();
+        this.addPaymentDate = new forms_1.FormControl();
+        this.popUpProcess = new String();
+        this.popUpMsg = new String();
+        this.showPopup = false;
+        this.showMainScreen = true;
         this.loan = new jdf_calculator_classes_1.Loan;
         this.loanItem = "";
     }
+    JDFCalculator.prototype.clickPopUpMsg = function (msg, process) {
+        this.popUpMsg = msg;
+        this.popUpProcess = process;
+        this.showPopup = true;
+        this.showMainScreen = false;
+    };
+    JDFCalculator.prototype.resetScreen = function () {
+        this.showMainScreen = true;
+        this.showPopup = false;
+    };
     JDFCalculator.prototype.ngOnInit = function () {
         var _this = this;
         var dbTimeMillis = 750;
