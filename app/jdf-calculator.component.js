@@ -26,6 +26,7 @@ var JDFCalculator = (function () {
         this.addPaymentDate = new forms_1.FormControl();
         this.popUpProcess = new String();
         this.popUpMsg = new String();
+        this.coverDiv = false;
         this.showPopup = false;
         this.showMainScreen = true;
         this.loan = new jdf_calculator_classes_1.Loan;
@@ -34,11 +35,13 @@ var JDFCalculator = (function () {
     JDFCalculator.prototype.clickPopUpMsg = function (msg, process) {
         this.popUpMsg = msg;
         this.popUpProcess = process;
+        this.coverDiv = true;
         this.showPopup = true;
-        this.showMainScreen = false;
+        //   this.showMainScreen = false;
     };
     JDFCalculator.prototype.resetScreen = function () {
         this.showMainScreen = true;
+        this.coverDiv = false;
         this.showPopup = false;
     };
     JDFCalculator.prototype.ngOnInit = function () {

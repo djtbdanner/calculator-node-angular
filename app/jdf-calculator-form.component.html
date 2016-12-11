@@ -21,12 +21,6 @@
                 Interest Rate is required and must be numeric.
             </small>
           </td>
-          <td class="hidden-xs">
-            <input type="button" class="btn btn-info" value="Add" (click)="clickPopUpMsg('Add Payment', 'Add')" />
-            <input type="button" class="btn btn-info" value="Balloon" (click)="clickPopUpMsg('Add Balloon', 'Add')" />
-            <br> <br>
-            <input type="button" class="btn btn-info" value="Skip" (click)="clickPopUpMsg('Add Skip', 'Skip')" />
-          </td>
         </tr>
         <tr>
           <td>
@@ -41,19 +35,25 @@
             <label>Start Date</label>
             <input type="date" class="form-control" name="startDate" [formControl]="startDate" (change)="clearSchedule()">
           </td>
-          <td class="hidden-xs">
-            <input type="button" class="btn btn-info" value="Fix" (click)="clickPopUpMsg('Add Fix', 'Fix')" />
-            <br> <br>
-            <input type="button" class="btn btn-info" value="Waiver" (click)="clickPopUpMsg('Add Waiver', 'Add')" />
-            <input type="button" class="btn btn-info" value="Buy-Down"(click)="clickPopUpMsg('Add Buy-Down', 'Add')" />
-          </td>
         </tr>
         <tr>
-          <td colspan="6">
+          <td colspan="2">
             <label>Loan item</label>
             <input class="form-control" [(ngModel)]="loanItem" name="loanItem" placeholder="Optionally add item or items loan is for.">
           </td>
         </tr>
+        <tr>
+          <td class="hidden-xs" colspan="2">
+            <input type="button" class="btn btn-info" [disabled]="!paymentData" value="Add" (click)="clickPopUpMsg('Add Payment', 'Add')" />
+            <input type="button" class="btn btn-info" [disabled]="!paymentData" value="Fix" (click)="clickPopUpMsg('Add Fix', 'Fix')" />
+            <input type="button" class="btn btn-info" [disabled]="!paymentData" value="Waiver" (click)="clickPopUpMsg('Add Waiver', 'Add')" />
+            <input type="button" class="btn btn-info" [disabled]="!paymentData" value="Buy-Down" (click)="clickPopUpMsg('Add Buy-Down', 'Add')" />
+            <input type="button" class="btn btn-info" [disabled]="!paymentData" value="Balloon" (click)="clickPopUpMsg('Add Balloon', 'Add')" />
+            <input type="button" class="btn btn-info" [disabled]="!paymentData" value="Skip" (click)="clickPopUpMsg('Add Skip', 'Skip')" />
+          </td>
+        </tr>
+
+
       </tbody>
     </table>
     <div *ngIf="paymentData">
@@ -100,22 +100,34 @@
     </div>
 
     <!-- Add payment div -->
-    <div *ngIf="showPopup" class="container">
+    <!--<div *ngIf="showPopup" class="container" style = "width%; top:20px">-->
+    <div *ngIf="showPopup" class="modal-header popup basic">
       <h4 class="text-center">{{ popUpMsg }}</h4>
       <input type="text" class="form-control" placeholder="Add Payment Amount" name="addPayment" minlength="2" maxlength="8" ngModel
         pattern="[0-9.]{1,9}" [formControl]="addPayment">
       <small [hidden]="addPayment.valid || (addPayment.pristine)" class="text-danger"> 
-                Add Payment amount must be numeric.
+                Payment amount must be numeric.
       </small>
-      <br/>
+      <!--<br/>
       <input type="date" class="form-control" name="addPaymentDate" [formControl]="addPaymentDate">
+      <br/>-->
       <br/>
-      <span class="input-group-btn ">
-      <input type="button" class="btn btn-info margin-left" value="{{ popUpProcess }}" (click)="resetScreen()" />
-      <input type="button" class="btn btn-info margin-left" value="Cancel" (click)="resetScreen()" />
+ 
+      <select name="addPaymentDate" class = "form-control"> 
+          <option *ngFor="let payment of payments" [value]="obj">{{payment.dueDate | date: 'MM/dd/yyyy'}}</option>
+      </select>
+      <br/>
+      <span>
+      <input type="button" class="btn btn-info"  [disabled]="!addPayment.valid ||  addPayment.pristine"  value="{{ popUpProcess }}" (click)="resetScreen()" />
+      <input type="button" class="btn btn-info" value="Cancel" (click)="resetScreen()" />
        </span>
       <br/>
       <br/>
+    </div>
+
+    <div class="coverDiv" *ngIf="coverDiv">
+
+      cver div
     </div>
   </form>
 </div>

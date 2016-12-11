@@ -7,6 +7,7 @@ export class Payment {
     dueDate: Date;
     totalInterest: number = 0;
     beginningBalance = 0;
+    type: PaymentType;
 
     round() {
         this.amount = Math.round(this.amount * 100) / 100;
@@ -14,7 +15,7 @@ export class Payment {
         this.interest = Math.round(this.interest * 100) / 100;
         this.balance = Math.round(this.balance * 100) / 100;
         this.totalInterest = Math.round(this.totalInterest * 100) / 100;
-        this.beginningBalance = Math.round(this.beginningBalance * 100) / 100; 
+        this.beginningBalance = Math.round(this.beginningBalance * 100) / 100;
     }
 
 }
@@ -30,3 +31,7 @@ export class PaymentData {
     payment: Payment;
     payments: Payment[];
 }
+
+type PaymentType =
+    "Add" | "Skip" | "Payment";
+

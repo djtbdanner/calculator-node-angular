@@ -25,6 +25,7 @@ export class JDFCalculator {
     addPaymentDate = new FormControl();
     popUpProcess = new String();
     popUpMsg = new String();
+    coverDiv = false;
 
 
     showPopup = false;
@@ -37,12 +38,15 @@ export class JDFCalculator {
 
     clickPopUpMsg( msg : String,  process: String) {
         this.popUpMsg = msg;
+
         this.popUpProcess = process;
+        this.coverDiv = true;
         this.showPopup = true;
-        this.showMainScreen = false;
+     //   this.showMainScreen = false;
     }
     resetScreen() {
         this.showMainScreen = true;
+        this.coverDiv = false;
         this.showPopup = false;
     }
 
