@@ -67,29 +67,35 @@ and (max-device-width : 480px) {
     }
 }
 
+.positionRight {
+    position: fixed !important; 
+    top:20px !important; 
+    right:6px !important; 
+}
+
 ul {
     position: fixed;
     list-style-type: none;
     margin: 0;
     padding: 0;
     width: 200px;
-    background-color: lightblue;
-    border: 1px solid #555;
-    top:20px;
+    background-color: 	#5bc0de;
+    border: 2px solid white;
+    top:50px;
     right:6px;
     border-radius:25px;
 }
 
 li a {
     display: block;
-    color: #000;
+    color: white;
     padding: 8px 16px;
     text-decoration: none;
 }
 
 li {
     text-align: center;
-    border-bottom: 1px solid #555;
+    border-bottom: 2px solid white;
 }
 
 li:last-child {

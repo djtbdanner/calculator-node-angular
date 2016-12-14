@@ -1,8 +1,10 @@
 <div class="basic">
   <h2 class="no-print">Loan Calculator</h2>
-  <ul *ngIf="!showMenu && paymentData" class="visible-xs">
-    <li (click) = "showTheMenu()"><a>Menu</a></li>
-  </ul>
+
+  <button type="button" (click) = "showTheMenu()" [disabled]="!paymentData" class="btn btn-info positionRight visible-xs">
+    <span class="glyphicon glyphicon-list"></span>
+  </button>
+
   <ul *ngIf="showMenu" class="visible-xs">
     <li (click)="clickPopUpMsg('Add Payment', 'Add')"><a>Add</a></li>
     <li (click)="clickPopUpMsg('Add Fix', 'Fix')"><a>Fix</a></li>
