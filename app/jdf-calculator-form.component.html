@@ -1,9 +1,22 @@
 <div class="basic">
-  <h2 class="no-print text-center ">Loan Calculator</h2>
+  <h2 class="no-print">Loan Calculator</h2>
+  <ul *ngIf="!showMenu && paymentData" class="visible-xs">
+    <li (click) = "showTheMenu()"><a>Menu</a></li>
+  </ul>
+  <ul *ngIf="showMenu" class="visible-xs">
+    <li (click)="clickPopUpMsg('Add Payment', 'Add')"><a>Add</a></li>
+    <li (click)="clickPopUpMsg('Add Fix', 'Fix')"><a>Fix</a></li>
+    <li (click)="clickPopUpMsg('Add Waiver', 'Add')"><a>Waiver</a></li>
+    <li (click)="clickPopUpMsg('Add Buy-Down', 'Add')"><a>Buy-Down</a></li>
+    <li (click)="clickPopUpMsg('Add Balloon', 'Add')"><a>Balloon</a></li>
+    <li (click)="clickPopUpMsg('Add Skip', 'Skip')"><a>Skip</a></li>
+  </ul>
   <form #form="ngForm">
+
 
     <table class="table no-print" *ngIf="showMainScreen">
       <tbody>
+
         <tr>
           <td>
             <label> Loan Amount</label>
@@ -43,13 +56,19 @@
           </td>
         </tr>
         <tr>
-          <td class="hidden-xs" colspan="2">
-            <input type="button" class="btn btn-info" [disabled]="!paymentData" value="Add" (click)="clickPopUpMsg('Add Payment', 'Add')" />
-            <input type="button" class="btn btn-info" [disabled]="!paymentData" value="Fix" (click)="clickPopUpMsg('Add Fix', 'Fix')" />
-            <input type="button" class="btn btn-info" [disabled]="!paymentData" value="Waiver" (click)="clickPopUpMsg('Add Waiver', 'Add')" />
-            <input type="button" class="btn btn-info" [disabled]="!paymentData" value="Buy-Down" (click)="clickPopUpMsg('Add Buy-Down', 'Add')" />
-            <input type="button" class="btn btn-info" [disabled]="!paymentData" value="Balloon" (click)="clickPopUpMsg('Add Balloon', 'Add')" />
-            <input type="button" class="btn btn-info" [disabled]="!paymentData" value="Skip" (click)="clickPopUpMsg('Add Skip', 'Skip')" />
+          <td colspan="2" class="hidden-xs">
+            <input type="button" class="btn btn-info" [disabled]="!paymentData" value="Add" (click)="clickPopUpMsg('Add Payment', 'Add')"
+            />
+            <input type="button" class="btn btn-info" [disabled]="!paymentData" value="Fix" (click)="clickPopUpMsg('Add Fix', 'Fix')"
+            />
+            <input type="button" class="btn btn-info" [disabled]="!paymentData" value="Waiver" (click)="clickPopUpMsg('Add Waiver', 'Add')"
+            />
+            <input type="button" class="btn btn-info" [disabled]="!paymentData" value="Buy-Down" (click)="clickPopUpMsg('Add Buy-Down', 'Add')"
+            />
+            <input type="button" class="btn btn-info" [disabled]="!paymentData" value="Balloon" (click)="clickPopUpMsg('Add Balloon', 'Add')"
+            />
+            <input type="button" class="btn btn-info" [disabled]="!paymentData" value="Skip" (click)="clickPopUpMsg('Add Skip', 'Skip')"
+            />
           </td>
         </tr>
 
@@ -112,8 +131,8 @@
       <input type="date" class="form-control" name="addPaymentDate" [formControl]="addPaymentDate">
       <br/>-->
       <br/>
- 
-      <select name="addPaymentDate" class = "form-control"> 
+
+      <select name="addPaymentDate" class="form-control"> 
           <option *ngFor="let payment of payments" [value]="obj">{{payment.dueDate | date: 'MM/dd/yyyy'}}</option>
       </select>
       <br/>

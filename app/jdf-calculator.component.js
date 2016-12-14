@@ -27,22 +27,27 @@ var JDFCalculator = (function () {
         this.popUpProcess = new String();
         this.popUpMsg = new String();
         this.coverDiv = false;
+        this.showMenu = false;
         this.showPopup = false;
         this.showMainScreen = true;
         this.loan = new jdf_calculator_classes_1.Loan;
         this.loanItem = "";
     }
+    JDFCalculator.prototype.showTheMenu = function () {
+        this.showMenu = true;
+    };
     JDFCalculator.prototype.clickPopUpMsg = function (msg, process) {
         this.popUpMsg = msg;
         this.popUpProcess = process;
         this.coverDiv = true;
         this.showPopup = true;
-        //   this.showMainScreen = false;
+        this.showMenu = false;
     };
     JDFCalculator.prototype.resetScreen = function () {
         this.showMainScreen = true;
         this.coverDiv = false;
         this.showPopup = false;
+        this.showMenu = false;
     };
     JDFCalculator.prototype.ngOnInit = function () {
         var _this = this;

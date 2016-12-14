@@ -27,7 +27,7 @@ export class JDFCalculator {
     popUpMsg = new String();
     coverDiv = false;
 
-
+    showMenu = false;
     showPopup = false;
     showMainScreen = true;
 
@@ -36,18 +36,24 @@ export class JDFCalculator {
         this.loanItem = "";
     }
 
+    showTheMenu(){
+        this.showMenu = true;
+    }
+
     clickPopUpMsg( msg : String,  process: String) {
         this.popUpMsg = msg;
 
         this.popUpProcess = process;
         this.coverDiv = true;
         this.showPopup = true;
-     //   this.showMainScreen = false;
+        this.showMenu = false;
+
     }
     resetScreen() {
         this.showMainScreen = true;
         this.coverDiv = false;
         this.showPopup = false;
+        this.showMenu = false;
     }
 
     ngOnInit() {
