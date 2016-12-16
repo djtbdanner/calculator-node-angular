@@ -68,22 +68,22 @@ and (max-device-width : 480px) {
 }
 
 .positionRight {
-    position: fixed !important; 
+    position: absolute !important; 
     top:20px !important; 
     right:6px !important; 
 }
 
 ul {
-    position: fixed;
+    position: absolute;
     list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 200px;
-    background-color: 	#5bc0de;
-    border: 2px solid white;
-    top:50px;
-    right:6px;
-    border-radius:25px;
+    width: 105px;
+    background-color: #5bc0de;
+    border: 2px solid #4ba0ff;
+    top:19px;
+    right:5px;
+    border-radius:5px;
 }
 
 li a {
@@ -95,9 +95,19 @@ li a {
 
 li {
     text-align: center;
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid #4ba0ff;
 }
 
 li:last-child {
     border-bottom: none;
+}
+
+
+.wdth15 {
+    width:15%;
+}
+
+.paddingLeft {
+    width: 100%;
+    padding-left: 30px;
 }

@@ -59,18 +59,14 @@
         </tr>
         <tr>
           <td colspan="2" class="hidden-xs">
-            <input type="button" class="btn btn-info" [disabled]="!paymentData" value="Add" (click)="clickPopUpMsg('Add Payment', 'Add')"
-            />
-            <input type="button" class="btn btn-info" [disabled]="!paymentData" value="Fix" (click)="clickPopUpMsg('Add Fix', 'Fix')"
-            />
-            <input type="button" class="btn btn-info" [disabled]="!paymentData" value="Waiver" (click)="clickPopUpMsg('Add Waiver', 'Add')"
-            />
-            <input type="button" class="btn btn-info" [disabled]="!paymentData" value="Buy-Down" (click)="clickPopUpMsg('Add Buy-Down', 'Add')"
-            />
-            <input type="button" class="btn btn-info" [disabled]="!paymentData" value="Balloon" (click)="clickPopUpMsg('Add Balloon', 'Add')"
-            />
-            <input type="button" class="btn btn-info" [disabled]="!paymentData" value="Skip" (click)="clickPopUpMsg('Add Skip', 'Skip')"
-            />
+            <div class="paddingLeft">
+            <input type="button" class="btn btn-info wdth15" [disabled]="!paymentData" value="Add" (click)="clickPopUpMsg('Add Payment', 'Add')"/>
+            <input type="button" class="btn btn-info wdth15" [disabled]="!paymentData" value="Fix" (click)="clickPopUpMsg('Add Fix', 'Fix')"/>
+            <input type="button" class="btn btn-info wdth15" [disabled]="!paymentData" value="Waiver" (click)="clickPopUpMsg('Add Waiver', 'Add')"/>
+            <input type="button" class="btn btn-info wdth15" [disabled]="!paymentData" value="Buy-Down" (click)="clickPopUpMsg('Add Buy-Down', 'Add')"/>
+            <input type="button" class="btn btn-info wdth15" [disabled]="!paymentData" value="Balloon" (click)="clickPopUpMsg('Add Balloon', 'Add')"/>
+            <input type="button" class="btn btn-info wdth15" [disabled]="!paymentData" value="Skip" (click)="clickPopUpMsg('Add Skip', 'Skip')"/>
+            </div>
           </td>
         </tr>
 
